@@ -1,0 +1,41 @@
+﻿@model IEnumerable<FirstWebAppMVC.Models.CustomerViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="NewCustomer">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditCustomer", new {  id=item.CustomerId }) |
+                    @Html.ActionLink("Details", "FindCustomer", new { id = item.CustomerId }) |
+                    @Html.ActionLink("Delete", "DeleteCustomer", new { id = item.CustomerId })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
